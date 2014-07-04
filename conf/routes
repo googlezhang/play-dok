@@ -1,0 +1,4 @@
+GET /       controllers.Application.index
+GET /merge1 fr.applicius.PlayDokAction()
+
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
