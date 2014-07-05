@@ -8,8 +8,8 @@ import play.api.mvc._
 import fr.applicius.PlayDokAction
 
 object Application extends Controller {
-  def index = Assets.at(path = "/public", "index.html")
-  def form = Assets.at(path = "/public", "form.html")
+  def index = Assets.at("/public", "index.html")
+  def form = Assets.at("/public", "form.html")
 
   def merge2 = PlayDokAction(
     templateId = Some("ca62e08d-2082-4cd4-837c-d46a362091e3"))

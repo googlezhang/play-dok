@@ -2,4 +2,5 @@
 target
 logs
 *~
-conf/playdok.conf
+project/project
+project/target
