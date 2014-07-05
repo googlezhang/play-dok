@@ -1,4 +1,8 @@
-GET /       controllers.Application.index
-GET /merge1 fr.applicius.PlayDokAction()
+GET  /             controllers.Application.index
+GET  /form.html    controllers.Application.form
+GET  /assets/*file controllers.Assets.at(path="/public", file)
 
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET  /merge1.pdf   fr.applicius.PlayDokAction()
+GET  /merge2.pdf   controllers.Application.merge2()
+GET  /merge3.pdf   controllers.Application.merge3()
+POST /merge4.pdf   fr.applicius.PlayDokAction()

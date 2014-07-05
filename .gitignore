@@ -1,3 +1,5 @@
 .ensime*
 target
 logs
+*~
+conf/playdok.conf

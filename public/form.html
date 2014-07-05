@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="//go.applidok.com/en/media/favicon.ico" />
+
+    <title>PlayDok - Play 2.2 demo</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#"><i class="fa fa-play"></i> Demo</a></li>
+          <li><a href="https://github.com/applicius/play-dok/tree/play22-demo/" rel="external me"><i class="fa fa-github"></i> Sources</a></li>
+          <li><a href="https://github.com/applicius/play-dok" rel="external me"><i class="fa fa-info-circle"></i> Documentation</a></li>
+        </ul>
+        <h3 class="text-muted">Play Dok</h3>
+      </div>
+
+      <div class="page-header">
+        <h1>Demonstration
+          <small>How to merge form using Applidok in Play 2.2</small></h1>
+
+      </div>
+
+      <div class="container">
+        <a class="btn btn-default" href="./">
+          <i class="fa fa-arrow-left"></i> Back</a>
+          
+      </div>
+
+      <div class="container">
+        <h2>Authentication</h2>
+
+        <p>Some minimal parameters are required to call Applidok merge feature, to get at least PDF unchanged/unfilled. These requirements are Applidok credentials: application token, and template ID.</p>
+
+        <p>It can be provided either by application configuration (e.g. <tt>conf/application.conf</tt>), are as call parameters.</p>
+
+        <ul>
+          <li>Route <a href="merge1.pdf">/merge1.pdf</a> with credentials from configuration.</li>
+          <li>Route <a href="merge1.pdf?applidok_template=ca62e08d-2082-4cd4-837c-d46a362091e3">/merge1.pdf</a> with template selected by request parameter (<tt>applidok_template</tt>).</li>
+          <li>Route <a href="merge2.pdf">/merge2.pdf</a> with template specified as function parameter.</li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <h2>Area values</h2>
+
+        <p>Values to be filled in template area can be given using Play Dok either as function parameters (in your controller) or from field values (form).</p>
+
+        <ul>
+          <li>Route <a href="merge3.pdf">/merge3.pdf</a> with values as function parameters (<tt>fields = Map(...)</tt>).</li>
+
+          <li>Route <tt>/merge4.pdf</tt> provided values by form:
+            <div class="well">
+              <form method="POST" action="merge4.pdf" role="form">
+                <div class="form-group">
+                  <label for="Nom" class="control-label">Name</label>
+                  <input type="text" class="form-control" id="Nom" name="Nom" />
+                </div>
+                <div class="form-group">
+                  <label for="Adresse" class="control-label">Address</label>
+                  <input type="text" class="form-control" 
+                         id="Adresse" name="Adresse" />
+                </div>
+
+                <button class="btn btn-default btn-block">
+                  Call merge with form fields</button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <p>&copy; Applicius</p>
+      </div>
+    </div> <!-- /container -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="assets/js/link.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
