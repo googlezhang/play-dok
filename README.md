@@ -9,13 +9,11 @@ A demonstration Play app is available [online](http://play-demo.applidok.com/). 
 Add following library dependency in the `build.sbt` (or `project/Build.scala`) file of your application:
 
 ```scala
-resolvers += "Applicius Releases" at "https://raw.github.com/applicius/mvn-repo/master/releases/"
-
-libraryDependencies ++= Seq(
-  "fr.applicius" %% "play-dok" % "1.0-play2.2")
+libraryDependencies ++= Seq("fr.applicius" %% "play-dok" % "1.0-play2.3")
 ```
 
-> This library version is for Play 2.2.2, with up to Scala 2.10.4.
+> This library version is for Play 2.3.x, with up to Scala 2.11.1.
+> For compatibility with Play 2.2.x (and Scala 2.10), dependency version must be set to `1.0-play2.2`.
 
 You can create your Applidok account by [registering online](https://go.applidok.com). Template editor (Dhek) is freely available for [download](https://go.applidok.com/en/download.gz.html).
 
