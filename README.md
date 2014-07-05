@@ -2,7 +2,7 @@
 
 This is a library to use [Applidok](http://www.applidok.com) to generated PDF in [Play Framework](http://playframework.org) applications.
 
-A demonstration Play app is available [online](http://play-demo.applidok.com/). You can see sources of this demo on [GitHub](https://github.com/applicius/play-dok/tree/play22-demo/).
+A demonstration Play app is available [online](http://play22-dok.herokuapp.com/). You can see sources of this demo on [GitHub](https://github.com/applicius/play-dok/tree/play22-demo/).
 
 ## Setup
 
