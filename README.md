@@ -9,10 +9,7 @@ A demonstration Play app is available [online](http://play22-dok.herokuapp.com/)
 Add following library dependency in the `build.sbt` (or `project/Build.scala`) file of your application:
 
 ```scala
-resolvers += "Applicius Releases" at "https://raw.github.com/applicius/mvn-repo/master/releases/"
-
-libraryDependencies ++= Seq(
-  "fr.applicius" %% "play-dok" % "1.0-play2.2.2")
+libraryDependencies ++= Seq("fr.applicius" %% "play-dok" % "1.0-play2.2")
 ```
 
 > This library version is for Play 2.2.2, with up to Scala 2.10.4.
