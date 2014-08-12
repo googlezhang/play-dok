@@ -2,21 +2,21 @@ name := "play-dok"
 
 organization := "fr.applicius"
 
-version := "1.0-play2.3"
+version := "1.1-play2.3"
 
 javaOptions in ThisBuild ++= Seq("-source", "1.6", "-target", "1.6")
 
 scalaVersion := "2.10.4"
 
-crossScalaVersions := Seq("2.10.4", "2.11.1")
+crossScalaVersions := Seq("2.10.4", "2.11.2")
 
 resolvers += "Typesafe" at "http://repo.typesafe.com/typesafe/releases/"
 
 libraryDependencies ++= Seq(
-  "com.typesafe.play" %% "play" % "2.3.1" % "provided",
+  "com.typesafe.play" %% "play" % "2.3.3" % "provided",
   "net.databinder.dispatch" %% "dispatch-core" % "0.11.1",
   "org.specs2" %% "specs2" % "2.3.11" % "test",
-  "com.typesafe.play" %% "play-test" % "2.3.1" % "test")
+  "com.typesafe.play" %% "play-test" % "2.3.3" % "test")
 
 pomExtra in ThisBuild := (
   <url>https://github.com/applicius/play-dok/</url>
