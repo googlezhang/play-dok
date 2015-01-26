@@ -12,7 +12,7 @@
 :depends-on-modules
 ()
 :package
-"fr.applicius"
+"fr.applidok"
 :target
 "/Users/cchantep/Projects/play-dok/target/scala-2.10/classes"
 :formatting-prefs

@@ -1,4 +1,4 @@
-package fr.applicius
+package fr.applidok
 
 import java.util.{ Iterator ⇒ JIterator, List ⇒ JList, Map ⇒ JMap }
 
@@ -21,7 +21,7 @@ import play.api.libs.iteratee.Enumerator
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 /** PlayDok action */
-object PlayDokAction {
+object PlayAction {
   lazy val logger = Logger("playdok")
 
   /**
@@ -38,10 +38,10 @@ object PlayDokAction {
    * or request parameters.
    *
    * {{{
-   * import fr.applicius.PlayDokAction
+   * import fr.applidok.PlayAction
    *
    * // In your controller
-   * def myAction = PlayDokAction()
+   * def myAction = PlayAction()
    * }}}
    *
    * @param token Applidok (application) token
@@ -93,7 +93,7 @@ object PlayDokAction {
    * "applidok_template"), then as request headers (same names),
    * finally in application configuration (as fallback).
    */
-  private[applicius] def credentials(app: Application, req: Request[_], params: Map[String, String], tok: Option[String], tid: Option[String]): Option[(String, String)] = {
+  private[applidok] def credentials(app: Application, req: Request[_], params: Map[String, String], tok: Option[String], tid: Option[String]): Option[(String, String)] = {
 
     val (cfg, headers) = (app.configuration, req.headers)
     val (cfgAppToken, cfgTemplateId) = (cfg.getString("applidok.token"),
