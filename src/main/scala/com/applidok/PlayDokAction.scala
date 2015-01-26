@@ -1,4 +1,4 @@
-package fr.applidok
+package com.applidok
 
 import java.util.{ Iterator ⇒ JIterator, List ⇒ JList, Map ⇒ JMap }
 
@@ -38,7 +38,7 @@ object PlayAction {
    * or request parameters.
    *
    * {{{
-   * import fr.applidok.PlayAction
+   * import com.applidok.PlayAction
    *
    * // In your controller
    * def myAction = PlayAction()

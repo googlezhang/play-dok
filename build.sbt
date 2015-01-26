@@ -1,6 +1,6 @@
 name := "play-dok"
 
-organization := "fr.applidok"
+organization := "com.applidok"
 
 version := "1.2-play2.3"
 

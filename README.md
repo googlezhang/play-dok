@@ -9,7 +9,7 @@ A demonstration Play app is available [online](http://play-demo.applidok.com/). 
 Add following library dependency in the `build.sbt` (or `project/Build.scala`) file of your application:
 
 ```scala
-libraryDependencies ++= Seq("fr.applidok" %% "play-dok" % "1.2-play2.3")
+libraryDependencies ++= Seq("com.applidok" %% "play-dok" % "1.2-play2.3")
 ```
 
 > This library version is for Play 2.3.x, with up to Scala 2.11.5.
@@ -24,7 +24,7 @@ Play Dok provides actions to call Applidok features.
 You can configure it directly in `conf/routes`:
 
 ```
-POST /merge fr.applidok.PlayAction()
+POST /merge com.applidok.PlayAction()
 ```
 
 Then Applidok merge can be called in your application at URL `/merge`.
@@ -39,7 +39,7 @@ import scala.concurrent.Future
 import play.api._
 import play.api.mvc._
 
-import fr.applidok.PlayAction
+import com.applidok.PlayAction
 
 object MyController extends Controller {
   def simple = PlayAction()
@@ -85,7 +85,7 @@ package controllers
 import play.api._
 import play.api.mvc._
 
-import fr.applidok.PlayAction
+import com.applidok.PlayAction
 
 object MyController extends Controller {
   def merge1 = PlayAction(token = Some("token"))
@@ -107,7 +107,7 @@ package controllers
 import play.api._
 import play.api.mvc._
 
-import fr.applidok.PlayAction
+import com.applidok.PlayAction
 
 object MyController extends Controller {
   def merge = PlayAction( // with token and pre-filled field
