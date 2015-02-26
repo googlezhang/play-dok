@@ -1,4 +1,4 @@
-package com.applidok
+package com.fudok
 
 import java.util.{ Iterator ⇒ JIterator, List ⇒ JList, Map ⇒ JMap }
 
@@ -25,7 +25,7 @@ object PlayAction {
   lazy val logger = Logger("playdok")
 
   /**
-   * Creates an action that merges using Applidok.
+   * Creates an action that merges using Fudok.
    * This action can be used directly as route (where to POST from form page),
    * or can be composed with your own action.
    *
@@ -38,37 +38,37 @@ object PlayAction {
    * or request parameters.
    *
    * {{{
-   * import com.applidok.PlayAction
+   * import com.fudok.PlayAction
    *
    * // In your controller
    * def myAction = PlayAction()
    * }}}
    *
-   * @param token Applidok (application) token
+   * @param token Fudok (application) token
    * @param templateId Template ID
    * @param fields Values of fields to be merged
    * @param app Play application
    */
   def apply(token: Option[String] = None, templateId: Option[String] = None, fields: Map[String, String] = Map.empty, app: Application = play.api.Play.current) = Action async { req ⇒
-    logger info "Will call Applidok merge..."
+    logger info "Will call Fudok merge..."
 
     val params = parameters(req)
 
     credentials(app, req, params, token, templateId).fold[Future[SimpleResult]](
       Future.successful(Results.BadRequest(
-        "Missing Applidok credentials: token and template ID"))) { creds ⇒
+        "Missing Fudok credentials: token and template ID"))) { creds ⇒
 
-        logger debug s"Applidok credentials: $creds"
+        logger debug s"Fudok credentials: $creds"
 
-        val applidok = url("https://go.applidok.com/api/merge")
-        val ps = params ++ fields + ("applidok_token" -> creds._1,
-          "applidok_template" -> creds._2)
+        val fudok = url("https://go.fudok.com/api/merge")
+        val ps = params ++ fields + ("fudok_token" -> creds._1,
+          "fudok_template" -> creds._2)
 
-        logger trace s"Applidok parameters: $ps"
+        logger trace s"Fudok parameters: $ps"
 
-        Http((applidok << ps).POST) map {
+        Http((fudok << ps).POST) map {
           case suc if (suc.getStatusCode == 200) ⇒ {
-            logger info "PDF successfully merged by Applidok"
+            logger info "PDF successfully merged by Fudok"
 
             val hs = headers(suc.getHeaders.entrySet.iterator) filterNot { h ⇒
               h._1 == "Transfer-Encoding" || h._1 == "Server" ||
@@ -80,7 +80,7 @@ object PlayAction {
               body = Enumerator.fromStream(suc.getResponseBodyAsStream))
           }
           case err ⇒
-            logger error s"Error calling Applidok merge: ${err.getStatusCode} - ${err.getStatusText}"
+            logger error s"Error calling Fudok merge: ${err.getStatusCode} - ${err.getStatusText}"
             Results.InternalServerError(
               s"Fails to merge: ${err.getStatusCode} - ${err.getStatusText}")
         }
@@ -89,21 +89,21 @@ object PlayAction {
 
   /**
    * Looks up for merge credentials (application token, template Id),
-   * first among request parameters (named "applidok_token" and
-   * "applidok_template"), then as request headers (same names),
+   * first among request parameters (named "fudok_token" and
+   * "fudok_template"), then as request headers (same names),
    * finally in application configuration (as fallback).
    */
-  private[applidok] def credentials(app: Application, req: Request[_], params: Map[String, String], tok: Option[String], tid: Option[String]): Option[(String, String)] = {
+  private[fudok] def credentials(app: Application, req: Request[_], params: Map[String, String], tok: Option[String], tid: Option[String]): Option[(String, String)] = {
 
     val (cfg, headers) = (app.configuration, req.headers)
-    val (cfgAppToken, cfgTemplateId) = (cfg.getString("applidok.token"),
-      cfg.getString("applidok.template"))
+    val (cfgAppToken, cfgTemplateId) = (cfg.getString("fudok.token"),
+      cfg.getString("fudok.template"))
 
     val (headerAppToken, headerTemplateId) =
-      (headers.get("applidok_token"), headers.get("applidok_template"))
+      (headers.get("fudok_token"), headers.get("fudok_template"))
 
     val (reqAppToken, reqTemplateId) =
-      (params.get("applidok_token"), params.get("applidok_template"))
+      (params.get("fudok_token"), params.get("fudok_template"))
 
     logger debug s"""Credentials from,
 - configuration: token = ${cfgAppToken}, template ID = $cfgTemplateId

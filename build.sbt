@@ -1,8 +1,8 @@
 name := "play-dok"
 
-organization := "com.applidok"
+organization := "com.fudok"
 
-version := "1.2-play2.3"
+version := "1.0-play2.3"
 
 javaOptions in ThisBuild ++= Seq("-source", "1.6", "-target", "1.6")
 
